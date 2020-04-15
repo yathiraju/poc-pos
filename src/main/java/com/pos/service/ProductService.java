@@ -14,30 +14,24 @@ import java.util.List;
  *
  */
 @Service
+@Transactional
 public interface ProductService {
 	
-	@Transactional
+	
     List<Product> getAllProducts();
 
-	@Transactional
     Product getProduct(long productId);
 
-	@Transactional
     Product createProduct(Product product);
 
-	@Transactional
     void updateProduct(Product product);
 
-	@Transactional
     void deleteProduct(long productId);
 
-	@Transactional
     void deleteBulkProduct(List<Long> ids);
 
-	@Transactional
     List<Product> searchProduct(String displayName);
 
-	@Transactional
     Page<Product> findAllByPage(Pageable pageable);
 
    
