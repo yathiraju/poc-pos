@@ -39,15 +39,11 @@ public class ProductServiceImpl implements ProductService{
 
 	   @Override
 	    public Page<ProductWithStockQuantity> findProductWithStockQuantityByPage(Pageable pageable) {
-
 	       List<ProductWithStockQuantity> list= productRepository.productStock();
-
-	        System.out.println("nishi test 1 : "+list);
-
-	        Page<ProductWithStockQuantity> pageProductListWithStockQuantity  = new PageImpl<>(list);
+	       System.out.println("nishi test 1 : "+list);
+	       Page<ProductWithStockQuantity> pageProductListWithStockQuantity  = new PageImpl<>(list);
 	       System.out.println("nishi test 2 : "+pageProductListWithStockQuantity);
-
-	        return pageProductListWithStockQuantity;
+	       return pageProductListWithStockQuantity;
 	    }
 
 
