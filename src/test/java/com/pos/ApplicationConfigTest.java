@@ -31,6 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public abstract class ApplicationConfigTest {
 	
 	protected MockMvc mvc;
+	
 	@Autowired
 	WebApplicationContext context;
 	
