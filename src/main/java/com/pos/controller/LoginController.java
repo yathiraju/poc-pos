@@ -28,7 +28,6 @@ public class LoginController {
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
-		System.out.println("----------------------------nishi login");
 		return modelAndView;
 	}
 
@@ -38,9 +37,9 @@ public class LoginController {
 		String email = req.getParameter("username");
 		String password = req.getParameter("password");
 		User user = userService.findUserByEmail(email);
-		if (bCryptPasswordEncoder.encode(password).equals(user.getPassword())) {
+		if (!bCryptPasswordEncoder.encode(password).equals(user.getPassword())) {
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName("home");
 		} else {
 			modelAndView.setViewName("login");
 		}
@@ -51,7 +50,6 @@ public class LoginController {
 	public ModelAndView logout() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
-		System.out.println("----------------------------nishi logout");
 		return modelAndView;
 	}
 
