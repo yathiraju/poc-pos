@@ -63,27 +63,27 @@ public class ProductController {
 		return modelAndView;
 	}
 
-	/*
-	 * @RequestMapping(path = "/products", method = RequestMethod.GET) public
-	 * ModelAndView showProducts(@RequestParam(required = false) String displayName)
-	 * { if (displayName == null) { ModelAndView modelAndView = new ModelAndView();
-	 * 
-	 * modelAndView.addObject("products", productService.getAllProducts());
-	 * modelAndView.setViewName("showProducts");
-	 * 
-	 * return modelAndView; } else { ModelAndView modelAndView = new ModelAndView();
-	 * 
-	 * modelAndView.addObject("products",
-	 * productService.searchProduct(displayName));
-	 * modelAndView.setViewName("showProducts");
-	 * System.out.println("nishi-------------showProducts: " + displayName); return
-	 * modelAndView; } }
-	 */
+	
+	@RequestMapping(path = "/products", method = RequestMethod.GET)
+	public ModelAndView showProducts(@RequestParam(required = false) String displayName) {
+		if (displayName == null) {
+			ModelAndView modelAndView = new ModelAndView();
+
+			modelAndView.addObject("products", productService.getAllProducts());
+			modelAndView.setViewName("showProducts");
+			return modelAndView;
+		} else {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("products", productService.searchProduct(displayName));
+			modelAndView.setViewName("showProducts");
+			return modelAndView;
+		}
+	}
+	 
 
 	@RequestMapping(value = "/pageable", method = RequestMethod.GET)
-	public ModelAndView productPageable(Pageable pageable) { // Page<Product>
+	public ModelAndView productPageable(Pageable pageable) { 
 		ModelAndView modelAndView = new ModelAndView();
-		// Page<Product> productList = productService.findAllByPage(pageable);
 		Page<ProductWithStockQuantity> pageProductListWithStockQuantity = productService
 				.findProductWithStockQuantityByPage(pageable);
 		modelAndView.addObject("page", pageProductListWithStockQuantity);
