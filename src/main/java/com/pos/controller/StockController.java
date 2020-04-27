@@ -26,26 +26,18 @@ public class StockController {
 
     @Autowired
     private StockService stockService;
-    @Autowired
-    private ProductService productService;
 
     @RequestMapping(path = "/addStock", method = RequestMethod.GET)
     public ModelAndView showAddStockForm(@RequestParam(required = false) Long productId) throws Exception{
 
         ModelAndView modelAndView = new ModelAndView();
-
+        StockDTO stockDTO = new StockDTO();
         if (productId != null) {
-
-            StockDTO stockDTO = new StockDTO();
             stockDTO.setProductId(productId);
-
-            modelAndView.addObject("stockDTO", stockDTO);
-        } else {
-            modelAndView.addObject("stockDTO", new StockDTO());
+            
         }
-
+        modelAndView.addObject("stockDTO", stockDTO);
         modelAndView.setViewName("addStock");
-
         return modelAndView;
     }
 

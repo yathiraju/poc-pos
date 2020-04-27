@@ -1,6 +1,7 @@
 package com.pos.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
  * @author yathi
  *
  */
+@Component
 public class StockDTO {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date stockEntryDate;

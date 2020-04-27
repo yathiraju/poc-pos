@@ -28,7 +28,7 @@ id INT,displayName CHAR(200), vendor CHAR(200) ,catagory CHAR(20),
 brand CHAR(20),description CHAR(200),weight DECIMAL(10,3),
 barcode CHAR(100), PRIMARY KEY ( id) );
 
-CREATE TABLE Stock (id INT,stockEntryDate DATE,stockExpireDate DATE,
+CREATE TABLE Stock (id INT,stock_entry_date DATE,stock_expire_date DATE,
 purchasePrice DECIMAL(10,3),salePrice DECIMAL(10,3),quantiy INT,product_id INT,
 PRIMARY KEY ( id), FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE );
 
@@ -52,4 +52,34 @@ ALTER TABLE User MODIFY password CHAR(255) ;
 
 
 CREATE TABLE Image(id INT,name CHAR(255),PRIMARY KEY ( id));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+request body : Stock /create
+{"stockEntryDate":1605070800000,"stockExpireDate":1668142800000,"quantiy":10,"productId":11,"purchasePrice":70000,"salePrice":90000}
   

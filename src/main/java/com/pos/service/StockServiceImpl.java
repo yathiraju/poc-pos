@@ -48,7 +48,6 @@ public class StockServiceImpl implements StockService {
         stockById.setStockEntryDate(stockDTO.getStockEntryDate());
         stockById.setStockExpireDate(stockDTO.getStockExpireDate());
         stockById.setQuantiy(stockDTO.getQuantiy());
-
         Optional<Product> product = productRepository.findById(stockDTO.getProductId());
 
         stockById.setProduct(product.get());
