@@ -32,8 +32,8 @@ CREATE TABLE Stock (id INT,stock_entry_date DATE,stock_expire_date DATE,
 purchasePrice DECIMAL(10,3),salePrice DECIMAL(10,3),quantiy INT,product_id INT,
 PRIMARY KEY ( id), FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE );
 
-CREATE TABLE Invoice(id INT,invoiceQuantiy INT,uniquePrice DECIMAL(10,3),
-totalPrice DECIMAL(10,3),accountNumber INT,invoiceDate DATE,stock_id INT,PRIMARY KEY ( id),
+CREATE TABLE Invoice(id INT,invoice_quantiy INT,unique_price DECIMAL(10,3),
+total_price DECIMAL(10,3),account_number INT,invoice_date DATE,stock_id INT,PRIMARY KEY ( id),
 FOREIGN KEY (stock_id) REFERENCES Stock(id) ON DELETE CASCADE );
 
 
