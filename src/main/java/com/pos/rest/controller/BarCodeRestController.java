@@ -1,13 +1,10 @@
 package com.pos.rest.controller;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +23,11 @@ public class BarCodeRestController {
 
 	@GetMapping(value = "/barbecue/ean13/{barcode}", produces = MediaType.IMAGE_PNG_VALUE)
 	public byte[] barbecueEAN13Barcode(@PathVariable("barcode") String barcode) throws Exception {
-
 		BufferedImage bufferedImage = BarbecueBarcodeGenerator.generateEAN13BarcodeImage(barcode);
-		File outputfile = new File(barcode + "_saved.png");
-		ImageIO.write(bufferedImage, "png", outputfile);
-		InputStream in = new FileInputStream(barcode + "_saved.png");
-		return IOUtils.toByteArray(in);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write( bufferedImage, "png", baos );
+		baos.flush();
+		return baos.toByteArray();
 	}
 
 }
