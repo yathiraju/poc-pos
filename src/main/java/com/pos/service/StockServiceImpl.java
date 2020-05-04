@@ -41,17 +41,13 @@ public class StockServiceImpl implements StockService {
     public Stock createStock(StockDTO stockDTO) {
 
         Stock stockById = new Stock();
-
         stockById.setPurchasePrice(stockDTO.getPurchasePrice());
         stockById.setSalePrice(stockDTO.getSalePrice());
-
         stockById.setStockEntryDate(stockDTO.getStockEntryDate());
         stockById.setStockExpireDate(stockDTO.getStockExpireDate());
         stockById.setQuantiy(stockDTO.getQuantiy());
         Optional<Product> product = productRepository.findById(stockDTO.getProductId());
-
         stockById.setProduct(product.get());
-
         stockRepository.save(stockById);
         return stockById;
     }
@@ -63,7 +59,6 @@ public class StockServiceImpl implements StockService {
         Stock stockById=st.get();
         stockById.setPurchasePrice(stock.getPurchasePrice());
         stockById.setSalePrice(stock.getSalePrice());
-
         stockById.setStockEntryDate(stock.getStockEntryDate());
         stockById.setStockExpireDate(stock.getStockExpireDate());
         stockById.setQuantiy(stock.getQuantiy());
